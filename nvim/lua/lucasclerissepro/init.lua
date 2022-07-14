@@ -22,6 +22,7 @@ Nnoremap = CreateNoremap("n", { noremap = true })
 Inoremap = CreateNoremap("i", { noremap = true })
 
 require("lucasclerissepro.lsp")
+require("lucasclerissepro.git")
 require("lucasclerissepro.lualine")
 require("lucasclerissepro.treesitter")
 
@@ -48,7 +49,9 @@ return require('packer').startup(function(use)
   use 'lukas-reineke/lsp-format.nvim'
   use 'kyazdani42/nvim-web-devicons'
   use 'nvim-lualine/lualine.nvim'
+  use 'ThePrimeagen/git-worktree.nvim'
   use 'nvim-treesitter/nvim-treesitter'
+  use 'tpope/vim-fugitive'
   use 'jiangmiao/auto-pairs'
 
   use {
