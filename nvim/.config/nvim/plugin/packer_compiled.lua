@@ -201,6 +201,11 @@ _G.packer_plugins = {
     path = "/Users/lucasclerisse/.local/share/nvim/site/pack/packer/start/trouble.nvim",
     url = "https://github.com/folke/trouble.nvim"
   },
+  ["vim-dispatch"] = {
+    loaded = true,
+    path = "/Users/lucasclerisse/.local/share/nvim/site/pack/packer/start/vim-dispatch",
+    url = "https://github.com/tpope/vim-dispatch"
+  },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/Users/lucasclerisse/.local/share/nvim/site/pack/packer/start/vim-fugitive",
@@ -215,6 +220,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/lucasclerisse/.local/share/nvim/site/pack/packer/start/vim-surround",
     url = "https://github.com/tpope/vim-surround"
+  },
+  ["vim-test"] = {
+    loaded = true,
+    path = "/Users/lucasclerisse/.local/share/nvim/site/pack/packer/start/vim-test",
+    url = "https://github.com/vim-test/vim-test"
   }
 }
 
