@@ -22,9 +22,11 @@ Nnoremap = CreateNoremap("n", { noremap = true })
 Inoremap = CreateNoremap("i", { noremap = true })
 
 require("lucasclerissepro.lsp")
+require("lucasclerissepro.presence")
 require("lucasclerissepro.git")
 require("lucasclerissepro.lualine")
 require("lucasclerissepro.treesitter")
+require("lucasclerissepro.snippets")
 
 return require('packer').startup(function(use)
   -- My plugins here
@@ -33,8 +35,8 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'nvim-lua/plenary.nvim'
   use 'google/vim-jsonnet'
-  use 'L3MON4D3/LuaSnip'
   use 'gpanders/editorconfig.nvim'
+  use 'tpope/vim-surround'
   use 'ThePrimeagen/harpoon'
   use 'folke/tokyonight.nvim'
   use 'neovim/nvim-lspconfig'
@@ -44,6 +46,8 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-cmdline'
+  use 'saadparwaiz1/cmp_luasnip'
+  use 'L3MON4D3/LuaSnip'
   use 'hrsh7th/nvim-cmp'
   use 'mfussenegger/nvim-dap'
   use 'lukas-reineke/lsp-format.nvim'
@@ -53,6 +57,14 @@ return require('packer').startup(function(use)
   use 'nvim-treesitter/nvim-treesitter'
   use 'tpope/vim-fugitive'
   use 'jiangmiao/auto-pairs'
+  use 'andweeb/presence.nvim'
+
+  use {
+    'pwntester/octo.nvim',
+    config = function()
+      require "octo".setup()
+    end
+  }
 
   use {
     "folke/trouble.nvim",

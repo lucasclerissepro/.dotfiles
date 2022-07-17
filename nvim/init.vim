@@ -30,7 +30,6 @@ set scrolloff=8
 set colorcolumn=90
 set signcolumn=yes
 
-
 " Leetcode plugin configuration
 let g:leetcode_browser='chrome'
 let g:leetcode_solution_filetype='golang'
