@@ -1,10 +1,18 @@
 local cmp = require('cmp')
+local null_ls = require('null-ls')
 local luasnip = require('luasnip')
 
 local has_words_before = function()
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
+
+-- null_ls.setup({
+--     sources = {
+--         null_ls.builtins.code_actions.refactoring,
+--         null_ls.builtins.code_actions.gitsigns,
+--     }
+-- })
 
 -- Compe configuration used for autocompletion
 cmp.setup({
@@ -71,6 +79,7 @@ local function config(_config)
             Nnoremap("gd", ":lua vim.lsp.buf.definition()<CR>")
             Nnoremap("K", ":lua vim.lsp.buf.hover()<CR>")
             Nnoremap("<leader>vws", ":lua vim.lsp.buf.workspace_symbol()<CR>")
+            Nnoremap("<leader>vs", ":lua vim.lsp.buf.document_symbol()<CR>")
             Nnoremap("<leader>vd", ":lua vim.diagnostic.open_float()<CR>")
             Nnoremap("[d", ":lua vim.lsp.diagnostic.goto_next()<CR>")
             Nnoremap("]d", ":lua vim.lsp.diagnostic.goto_prev()<CR>")

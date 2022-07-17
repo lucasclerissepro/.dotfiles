@@ -27,6 +27,8 @@ require("lucasclerissepro.git")
 require("lucasclerissepro.lualine")
 require("lucasclerissepro.treesitter")
 require("lucasclerissepro.snippets")
+require("lucasclerissepro.refactoring")
+require("lucasclerissepro.ui")
 
 return require('packer').startup(function(use)
     -- My plugins here
@@ -44,6 +46,7 @@ return require('packer').startup(function(use)
     use 'ianding1/leetcode.vim'
     use { 'nvim-telescope/telescope.nvim', tag = '0.1.0' }
     use 'neovim/nvim-lspconfig'
+    use 'nvim-telescope/telescope-ui-select.nvim'
     use 'lukas-reineke/lsp-format.nvim'
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/cmp-buffer'
@@ -53,6 +56,7 @@ return require('packer').startup(function(use)
     use 'mfussenegger/nvim-dap'
     use 'saadparwaiz1/cmp_luasnip'
     use 'vim-test/vim-test'
+    use 'ThePrimeagen/refactoring.nvim'
     use 'L3MON4D3/LuaSnip'
     use 'kyazdani42/nvim-web-devicons'
     use 'nvim-lualine/lualine.nvim'
@@ -61,6 +65,16 @@ return require('packer').startup(function(use)
     use 'tpope/vim-fugitive'
     use 'jiangmiao/auto-pairs'
     use 'andweeb/presence.nvim'
+
+    -- TODO: add this later when I am more familiar with the exiting tooling
+    -- use 'jose-elias-alvarez/null-ls.nvim'
+    --
+    use {
+        'lewis6991/gitsigns.nvim',
+        config = function()
+            require('gitsigns').setup()
+        end
+    }
 
     use {
         'pwntester/octo.nvim',
@@ -77,8 +91,6 @@ return require('packer').startup(function(use)
     }
 
     use 'github/copilot.vim'
-    -- remove because it's making exiting insert mode super slow
-    -- use 'airblade/vim-gitgutter'
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
