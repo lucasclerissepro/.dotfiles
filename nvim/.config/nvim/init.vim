@@ -13,8 +13,8 @@ set wildignore+=**/ios/*
 set wildignore+=**/.git/*
 
 set relativenumber
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set expandtab
 set hidden
 set nu
@@ -27,10 +27,10 @@ set undofile
 set incsearch
 set termguicolors
 set scrolloff=8
-set colorcolumn=90
+set colorcolumn=80
 set signcolumn=yes
 
-set timeoutlen=50
+" set timeoutlen=50
 
 " Leetcode plugin configuration
 let g:leetcode_browser='chrome'
