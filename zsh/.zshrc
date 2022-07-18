@@ -18,6 +18,7 @@ export PATH="${PATH}:${HOME}/google/bin"
 export PATH="${PATH}:${HOME}/.cargo/bin"
 export PATH="${PATH}:/usr/local/bin"
 
+alias n="nvim"
 alias ls="exa"
 alias k="kubecolor"
 alias git="/usr/local/bin/git"
@@ -32,7 +33,13 @@ ZSH_THEME="robbyrussell"
 
 
 function clone() {
-  selected=$(gh repo list --json owner,name | jq 'map_values(.owner.login + "/" + .name)' | sed '1d;$d' | sed 's/.$//' | fzf)
+  selected=""
+  if [ "$1" != "" ]; then
+    selected=$(gh repo list "$1" --json owner,name | jq 'map_values(.owner.login + "/" + .name)' | sed '1d;$d' | sed 's/.$//' | fzf)
+  else
+    selected=$(gh repo list --json owner,name | jq 'map_values(.owner.login + "/" + .name)' | sed '1d;$d' | sed 's/.$//' | fzf)
+  fi
+
   cleaned=$(echo $selected | tr -d '"' | tr -d ' ')
   addr="git@github.com:$cleaned.git"
   git clone $addr
