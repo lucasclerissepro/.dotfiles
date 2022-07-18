@@ -76,6 +76,8 @@ return require('packer').startup(function(use)
         end
     }
 
+    use { 'TimUntersberger/neogit' }
+
     use {
         'pwntester/octo.nvim',
         config = function()
