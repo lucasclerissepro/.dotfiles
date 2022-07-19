@@ -39,6 +39,7 @@ return require('packer').startup(function(use)
     use 'tpope/vim-dispatch'
     use 'skywind3000/asyncrun.vim'
     use 'google/vim-jsonnet'
+    use 'hashivim/vim-terraform' -- for syntax highlighting of terraform code
     use 'gpanders/editorconfig.nvim'
     use 'tpope/vim-surround'
     use 'ThePrimeagen/harpoon'
