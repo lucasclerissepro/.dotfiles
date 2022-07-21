@@ -33,7 +33,7 @@ ZSH_THEME="robbyrussell"
 
 function clone() {
   owner=$(basename $(pwd))
-  selected=$(gh repo list "$owner" --limit 300 --json owner,name | jq 'map_values(.owner.login + "/" + .name)' | sed '1d;$d' | sed 's/.$//' | fzf)
+  selected=$(gh repo list "$owner" --limit 1000 --json owner,name | jq 'map_values(.owner.login + "/" + .name)' | sed '1d;$d' | sed 's/.$//' | fzf)
 
   cleaned=$(echo $selected | tr -d '"' | tr -d ' ')
   addr="git@github.com:$cleaned.git"
@@ -42,7 +42,7 @@ function clone() {
 
 function cloneb() {
   owner=$(basename $(pwd))
-  selected=$(gh repo list "$owner" --limit 300 --json owner,name | jq 'map_values(.owner.login + "/" + .name)' | sed '1d;$d' | sed 's/.$//' | fzf)
+  selected=$(gh repo list "$owner" --limit 1000 --json owner,name | jq 'map_values(.owner.login + "/" + .name)' | sed '1d;$d' | sed 's/.$//' | fzf)
 
   cleaned=$(echo $selected | tr -d '"' | tr -d ' ')
   addr="git@github.com:$cleaned.git"
