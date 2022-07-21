@@ -30,6 +30,8 @@ set scrolloff=8
 set colorcolumn=80
 set signcolumn=yes
 
+set clipboard=unnamedplus
+
 " set timeoutlen=50
 
 " Leetcode plugin configuration
