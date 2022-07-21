@@ -20,7 +20,7 @@ export PATH="${PATH}:/usr/local/bin"
 
 alias n="nvim"
 alias ls="exa"
-alias k="kubecolor"
+alias k="kubectl"
 alias git="/usr/local/bin/git"
 
 . $HOME/.wasienv/wasienv.sh
@@ -33,7 +33,6 @@ ZSH_THEME="robbyrussell"
 
 function clone() {
   owner=$(basename $(pwd))
-  selected=""
   selected=$(gh repo list "$owner" --json owner,name | jq 'map_values(.owner.login + "/" + .name)' | sed '1d;$d' | sed 's/.$//' | fzf)
 
   cleaned=$(echo $selected | tr -d '"' | tr -d ' ')
@@ -43,7 +42,6 @@ function clone() {
 
 function cloneb() {
   owner=$(basename $(pwd))
-  selected=""
   selected=$(gh repo list "$owner" --json owner,name | jq 'map_values(.owner.login + "/" + .name)' | sed '1d;$d' | sed 's/.$//' | fzf)
 
   cleaned=$(echo $selected | tr -d '"' | tr -d ' ')
