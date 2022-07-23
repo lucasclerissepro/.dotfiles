@@ -1,0 +1,16 @@
+#!/usr/bin/env zsh
+
+set -e
+
+task="$*"
+
+if [[ $task == "" ]]; then
+    echo "Provide the task as a first argument"
+    exit 1
+fi
+
+taskFile="$HOME/Library/Application Support/Übersicht/widgets/current-task-widget-master/data.json"
+
+toStore="{\"task\": \"$task\"}"
+
+echo $toStore | tee "$taskFile" 
