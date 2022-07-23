@@ -13,6 +13,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 export PATH="${PATH}:${HOME}/.local/bin"
 export PATH="${PATH}:${HOME}/.krew/bin"
+export PATH="${PATH}:${HOME}/.opam/default/bin"
 export PATH="${PATH}:${HOME}/go/bin"
 export PATH="${PATH}:${HOME}/google/bin"
 export PATH="${PATH}:${HOME}/.cargo/bin"
@@ -20,35 +21,41 @@ export PATH="${PATH}:/usr/local/bin"
 
 alias n="nvim"
 alias ls="exa"
+alias cat="bat"
 alias k="kubectl"
 alias git="/usr/local/bin/git"
 
 . $HOME/.wasienv/wasienv.sh
 
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+# ZSH_THEME="nord"
+
+test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
+
+[[ ! -r /Users/lucasclerisse/.opam/opam-init/init.zsh ]] || source /Users/lucasclerisse/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 
 function clone() {
   owner=$(basename $(pwd))
-  selected=$(gh repo list "$owner" --limit 300 --json owner,name | jq 'map_values(.owner.login + "/" + .name)' | sed -u '1d;$d'| sed -u 's/.$//' | fzf)
-
+  repos=$(gh repo list "$owner" --json owner,name --limit 300 --no-archived --source)
+  selected=$(echo "$repos" | jq 'map_values(.owner.login + "/" + .name)' | jq -c '.[]' | fzf)
+  
   cleaned=$(echo $selected | tr -d '"' | tr -d ' ')
+
   addr="git@github.com:$cleaned.git"
-  git clone $addr
+  git clone $addr 
 }
 
 function cloneb() {
   owner=$(basename $(pwd))
-  repos=$(gh repo list "$owner" --limit 300 --json owner,name)
-  filtered=$(echo $repos | jq 'map_values(.owner.login + "/" + .name)' | sed -u | sed -u 's/.$//')
-  selected=$(echo $filtered | fzf)
-
-  echo $repos
-
+  repos=$(gh repo list "$owner" --json owner,name --limit 300 --no-archived --source)
+  selected=$(echo "$repos" | jq 'map_values(.owner.login + "/" + .name)' | jq -c '.[]' | fzf)
+  
   cleaned=$(echo $selected | tr -d '"' | tr -d ' ')
+
   addr="git@github.com:$cleaned.git"
   git clone $addr --bare
 }
@@ -143,9 +150,17 @@ function h() {
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+
+fpath+=( "$HOME/.zfunctions" $fpath )
+
+autoload -U promptinit; promptinit
+prompt lambda-pure
+
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
+
+# See https://github.com/marszall87/lambda-pure#getting-started
 
 # User configuration
 

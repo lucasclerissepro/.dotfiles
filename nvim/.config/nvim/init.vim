@@ -39,8 +39,10 @@ let g:leetcode_browser='chrome'
 let g:leetcode_solution_filetype='golang'
 
 
-colorscheme tokyonight
-let g:lightline = {'colorscheme': 'tokyonight'}
+colorscheme nord
+let g:lightline = {
+    \ 'colorscheme': 'nord'
+    \ }
 
 " Initialise LUA modules
 lua require('lucasclerissepro')

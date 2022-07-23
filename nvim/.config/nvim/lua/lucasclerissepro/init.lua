@@ -24,7 +24,7 @@ Inoremap = CreateNoremap("i", { noremap = true })
 require("lucasclerissepro.lsp")
 require("lucasclerissepro.presence")
 require("lucasclerissepro.git")
-require("lucasclerissepro.lualine")
+require("lucasclerissepro.lightline")
 require("lucasclerissepro.treesitter")
 require("lucasclerissepro.snippets")
 require("lucasclerissepro.refactoring")
@@ -45,7 +45,7 @@ return require('packer').startup(function(use)
 
     use 'ThePrimeagen/harpoon'
 
-    use 'folke/tokyonight.nvim'
+    use 'arcticicestudio/nord-vim'
     use 'ianding1/leetcode.vim'
     use { 'nvim-telescope/telescope.nvim', tag = '0.1.0' }
     use 'neovim/nvim-lspconfig'
@@ -62,7 +62,7 @@ return require('packer').startup(function(use)
     use 'ThePrimeagen/refactoring.nvim'
     use 'L3MON4D3/LuaSnip'
     use 'kyazdani42/nvim-web-devicons'
-    use 'nvim-lualine/lualine.nvim'
+    use 'itchyny/lightline.vim'
     use 'ThePrimeagen/git-worktree.nvim'
     use 'nvim-treesitter/nvim-treesitter'
     use 'tpope/vim-fugitive'

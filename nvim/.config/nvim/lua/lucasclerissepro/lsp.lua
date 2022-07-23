@@ -133,6 +133,9 @@ require("lspconfig").zls.setup(config())
 -- Haskell
 require("lspconfig").hls.setup(config())
 
+-- Ocaml
+require('lspconfig').ocamllsp.setup(config())
+
 -- Terraform
 require("lspconfig").terraformls.setup(config())
 require("lspconfig").tflint.setup(config())
